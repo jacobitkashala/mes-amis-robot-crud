@@ -1,0 +1,80 @@
+/* @font-face{
+    font-family: "SEGA";
+    src:url('../fontall/SEGA.TTF'); 
+} */
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+div.contenaire-body{
+    /* background: cadetblue; */
+    margin: 30px 20px;
+
+}
+
+.titre{
+    font-family: "SEGA";
+    font-weight: 600;
+    color: #0ccac4;
+    text-align: center!important;
+}
+
+input{
+    padding-left: 20px;
+    height: 50px;
+   
+    outline: none;
+    font-size: 2rem;
+    font-weight: 100;
+    border: solid #000 3px;
+    border: none;
+    border-radius: 5px;
+    background: cadetblue;
+    /* background-color: ; */
+}
+
+div.contenaire-carte{ 
+    background-color: #9eebcf;
+    width: 20%;
+    height: 20%;
+    margin: 30px 30px;
+    border-radius:5px ;
+    cursor: pointer;
+}
+
+div.contenaire-carte:hover{ 
+    transition: all 0.4s ease-out ;
+    transform: scale(1.2);
+    
+}
+
+div.contenaire-carte h2{
+    text-align:left;
+    margin-bottom: 5px;
+    font-size: 1rem;
+
+}
+
+.cont--image{
+    border-radius: .5rem ;
+    margin: auto;
+  
+}
+.contenaire--cart{
+    cursor: pointer;
+    transform: scale(3);
+}
+.remove{
+    margin-left:-5000px ;
+}
+.newcontenaire-carte{ 
+    left: 10%;
+    background-color: #000;
+    width: 20%;
+    height: 20%;
+    margin: 30px 30px;
+    border-radius:5px ;
+    cursor: pointer;
+}
