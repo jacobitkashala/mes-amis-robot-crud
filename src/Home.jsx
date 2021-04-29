@@ -49,7 +49,7 @@ class Home extends React.Component {
     // console.log(chosenId)
 
     //chosenId=chosenElement.charAt(2);
-    chosenInfos=userData.filter(elment=> elment.id==chosenId);
+    chosenInfos=userData.filter(elment=> elment.id===chosenId);
     //console.log(chosenInfos);
     this.setState({chosen:chosenInfos});
     this.setState({showAll:!this.state.showAll})

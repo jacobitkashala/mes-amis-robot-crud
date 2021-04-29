@@ -5,8 +5,7 @@ const CartInfo = (props) => {
     let infoChesen=props.carteData[0];
 
     console.log(infoChesen)
-    let objetKey=[];
-    objetKey=Object.keys(infoChesen);
+    // ,
   return (
     <div className="newcontenaire-carte"id="" >  
     
