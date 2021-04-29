@@ -5,7 +5,6 @@ import Cart from "./Cart";
 import CartInfo from "./CartInfo";
 import Loader from "./Loader";
 
-
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -14,8 +13,9 @@ class Home extends React.Component {
       userDataref: [],
       userFind: "true",
       userName: "",
-      showAll:true,
-      chosen:[],
+      showAll: true,
+      img:React.createRef(),
+      chosen: [],
     };
   }
   onSeach = (event) => {
@@ -32,29 +32,29 @@ class Home extends React.Component {
     });
   };
 
-  onClickCart=(event)=>{
-    let  userData=[];
-    let chosenElement="";
-    let lengthString="";
-    let chosenId="";
-    let chosenInfos=[];
+  onClickCart = (event) => {
+    let userData = [];
+    let chosenElement = "";
+    let lengthString = "";
+    let chosenId = "";
+    let chosenInfos = [];
+    console.dir(event);
+    //this.state.img.current
+    userData = this.state.userData;
+    chosenElement = event.target.src;
+    lengthString = chosenElement.length;
+    chosenId = chosenElement.charAt(lengthString - 1);
 
-    userData=this.state.userData;
-    chosenElement=event.target.src;
-    lengthString=chosenElement.length;
-    chosenId=chosenElement.charAt(lengthString-1);
-    
     // console.log(chosenElement)
     // console.log(lengthString)
     // console.log(chosenId)
 
     //chosenId=chosenElement.charAt(2);
-    chosenInfos=userData.filter(elment=> elment.id===chosenId);
+    chosenInfos = userData.filter((elment) => elment.id === chosenId);
     //console.log(chosenInfos);
-    this.setState({chosen:chosenInfos});
-    this.setState({showAll:!this.state.showAll})
-
-  }
+    this.setState({ chosen: chosenInfos });
+    this.setState({ showAll: !this.state.showAll });
+  };
 
   componentDidMount() {
     const urlImg = "https://robohash.org";
@@ -66,55 +66,57 @@ class Home extends React.Component {
           let uriImg = urlImg + "/" + id;
           return { id, name, email, uriImg };
         });
-       
+
         this.setState({
           userData: list,
           userDataref: list,
         });
       });
-  } 
-  
+  }
+
   render() {
     let newsData = this.state.userData;
-   return(
-        <div className="container ">
-      { 
-        (newsData.length===0)?
-         (  <div>
-              <Loader/>
-          </div>):(
-            <> 
-              <div className="row container--title">
-                <h1 className="col-sm-5 title">MES AMIS ROBOTS</h1>
-                <input className="col-sm-5" onChange={this.onSeach} />
-              </div>
-              <div>
-            {
-            (this.state.showAll)? (
-              <>
-                <div className="row container-galerie">
-                  {newsData.map((user, key) => {
-                    this.state.userData.key = key;
-                    return (
-                      <Cart
-                        clickCart={this.onClickCart}
-                        dataUser={user}
-                        key={key}                
-                      />
-                    );
-                  })}     
-                </div>
-              </>
-            ):(
-                <CartInfo carteData={this.state.chosen}  clickImg={this.onSeach}/>       
-              )
-            }
+    return (
+      <div className="container ">
+        {newsData.length === 0 ? (
+          <div>
+            <Loader />
           </div>
-            </>
-          )
-        }
-    </div>
-    )
+        ) : (
+          <>
+            <div className="row container--title">
+              <h1 className="col-sm-5 title">MES AMIS ROBOTS</h1>
+              <input className="col-sm-5" onChange={this.onSeach} />
+            </div>
+            <div>
+              {this.state.showAll ? (
+                <>
+                  <div className="row container-galerie">
+                    {newsData.map((user, key) => {
+                      this.state.userData.key = key;
+                      return (
+                        <Cart
+                          clickCart={this.onClickCart}
+                          dataUser={user}
+                          key={key}
+                          
+                        />
+                      );
+                    })}
+                  </div>
+                </>
+              ) : (
+                <CartInfo
+                  carteData={this.state.chosen}
+                   //clickImg={this.onSeach}
+                   ref={this.state.img}
+                />
+              )}
+            </div>
+          </>
+        )}
+      </div>
+    );
   }
 }
 export default Home;
