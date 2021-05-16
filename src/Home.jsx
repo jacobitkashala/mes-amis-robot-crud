@@ -2,83 +2,76 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Style.css";
 import Cart from "./Cart";
-import CartInfo from "./CartInfo";
 import Loader from "./Loader";
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userData: [],
-      userDataref: [],
-      userFind: "true",
-      userName: "",
-      showAll: true,
-      img:React.createRef(),
-      chosen: [],
+      robotData: [],
+      robotDataRef: [],
+      robotChosen: [],
+      isClickedCart: false,
     };
   }
   onSeach = (event) => {
-    let caractere = event.target.value;
-    let tabref = this.state.userDataref;
-
-    let regexp = new RegExp(`^${caractere}`, "i");
-    let newuserData = tabref.filter((element) => {
-      return regexp.test(element.name);
+    let value = event.target.value.toLowerCase();
+    let seachRobot = [...this.state.robotDataRef];
+    //console.log(seachRobot);toLowerCase().includes(value.toLowerCase()))
+    let dataResultat = seachRobot.filter((robot) => {
+      return (
+        robot.username.toLowerCase().includes(value) ||
+        robot.name.toLowerCase().includes(value)
+      );
     });
-
+   // console.log(dataResultat);
+    // let regexp = new RegExp(`^${caractere}`, "i");
+    // let Data = this.state.robotDataref.filter((robot) => {
+    //   return robot.name.include(caractere);
+    // });
     this.setState({
-      userData: newuserData,
+      robotData: dataResultat,
     });
   };
 
-  onClickCart = (event) => {
-    let userData = [];
-    let chosenElement = "";
-    let lengthString = "";
-    let chosenId = "";
-    let chosenInfos = [];
-    console.dir(event);
-    //this.state.img.current
-    userData = this.state.userData;
-    chosenElement = event.target.src;
-    lengthString = chosenElement.length;
-    chosenId = chosenElement.charAt(lengthString - 1);
+  onClickCart = (idRobot) => {
+    this.setState({ isClickedCart: true });
+    let Robots = [...this.state.robotData];
 
-    // console.log(chosenElement)
-    // console.log(lengthString)
-    // console.log(chosenId)
-
-    //chosenId=chosenElement.charAt(2);
-    chosenInfos = userData.filter((elment) => elment.id === chosenId);
-    //console.log(chosenInfos);
-    this.setState({ chosen: chosenInfos });
-    this.setState({ showAll: !this.state.showAll });
+    let robotSelect = Robots.filter((robot) => {
+      return robot.id === idRobot;
+    });
+    this.setState({ robotChosen: robotSelect });
+  };
+  hiddenClickCart = () => {
+    this.setState({ isClickedCart: false });
   };
 
   componentDidMount() {
-    const urlImg = "https://robohash.org";
-
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((data) => {
-        let list = data.map(({ id, name, email }) => {
-          let uriImg = urlImg + "/" + id;
-          return { id, name, email, uriImg };
+        let robotDataAll = [{ image: "" }];
+        data.map((item, index) => {
+          robotDataAll = [...data];
+          robotDataAll[index].image = "https://robohash.org/" + index;
         });
-
         this.setState({
-          userData: list,
-          userDataref: list,
+          robotData: robotDataAll,
+          robotDataRef: robotDataAll,
         });
       });
   }
 
   render() {
-    let newsData = this.state.userData;
+    let Robotlength = [...this.state.robotData];
+    let dataRobot = this.state.robotData;
+    let robotChosen = this.state.robotChosen;
+    let isClickedCart = this.state.isClickedCart;
+
     return (
       <div className="container ">
-        {newsData.length === 0 ? (
+        {Robotlength.length === 0 ? (
           <div>
             <Loader />
           </div>
@@ -89,29 +82,15 @@ class Home extends React.Component {
               <input className="col-sm-5" onChange={this.onSeach} />
             </div>
             <div>
-              {this.state.showAll ? (
-                <>
-                  <div className="row container-galerie">
-                    {newsData.map((user, key) => {
-                      this.state.userData.key = key;
-                      return (
-                        <Cart
-                          clickCart={this.onClickCart}
-                          dataUser={user}
-                          key={key}
-                          
-                        />
-                      );
-                    })}
-                  </div>
-                </>
-              ) : (
-                <CartInfo
-                  carteData={this.state.chosen}
-                   //clickImg={this.onSeach}
-                   ref={this.state.img}
+              <div className="row container-galerie">
+                <Cart
+                  clickCart={this.onClickCart}
+                  dataRobot={dataRobot}
+                  robotChosen={robotChosen}
+                  isClickedCart={isClickedCart}
+                  hiddenClickCart={this.hiddenClickCart}
                 />
-              )}
+              </div>
             </div>
           </>
         )}

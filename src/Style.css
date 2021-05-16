@@ -90,6 +90,7 @@ div.bloc--imag {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  justify-items: center;
   background-color: #9eebcf;
   margin: 10px 10px;
   border-radius: 5px;
