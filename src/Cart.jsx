@@ -32,11 +32,11 @@ const Cart = ({
     return cartRobot;
   }
   function showRobtDetail(data) {
-    console.log(data)
+    console.log(data);
     let robot = data.map((infoRobot, index) => {
       return (
         <div key={index} className="bloc--imag col-sm-3" id="">
-          <img 
+          <img
             src={infoRobot.image}
             className="img-fluid"
             onClick={hiddenClickCart}
@@ -49,9 +49,10 @@ const Cart = ({
             <h2 className="">Télephone :{infoRobot.phone}</h2>
             <h2 className=""> website :{infoRobot.website}</h2>
             <h2 className=""> Company name :{infoRobot.company.name}</h2>
-            <h2 className=""> Company catchPhrase :{infoRobot.company.catchPhrase}</h2>
-           
-            
+            <h2 className="">
+              {" "}
+              Company catchPhrase :{infoRobot.company.catchPhrase}
+            </h2>
           </div>
         </div>
       );
@@ -62,7 +63,7 @@ const Cart = ({
   let cartRobot = showRobt(dataRobot);
   let cartRobotChosen = showRobtDetail(robotChosen);
   console.log(isClickedCart);
- 
+
   return <>{isClickedCart ? cartRobotChosen : cartRobot}</>;
 };
 export default Cart;

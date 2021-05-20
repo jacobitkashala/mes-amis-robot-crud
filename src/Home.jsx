@@ -52,11 +52,7 @@ class Home extends React.Component {
           robotDataAll = [...data];
           robotDataAll[index].image = "https://robohash.org/" + index;
         };
-        // const rest=data.map((item, index) => {
-        //   robotDataAll = [...data];
-        //   robotDataAll[index].image = "https://robohash.org/" + index;
-        // });
-       // console.log(rest)
+       
         this.setState({
           robotData: robotDataAll,
           robotDataRef: robotDataAll,
