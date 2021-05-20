@@ -47,10 +47,16 @@ class Home extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         let robotDataAll = [{ image: "" }];
-        data.map((item, index) => {
+        
+        for(const index in data){
           robotDataAll = [...data];
           robotDataAll[index].image = "https://robohash.org/" + index;
-        });
+        };
+        // const rest=data.map((item, index) => {
+        //   robotDataAll = [...data];
+        //   robotDataAll[index].image = "https://robohash.org/" + index;
+        // });
+       // console.log(rest)
         this.setState({
           robotData: robotDataAll,
           robotDataRef: robotDataAll,
