@@ -17,18 +17,13 @@ class Home extends React.Component {
   onSeach = (event) => {
     let value = event.target.value.toLowerCase();
     let seachRobot = [...this.state.robotDataRef];
-    //console.log(seachRobot);toLowerCase().includes(value.toLowerCase()))
     let dataResultat = seachRobot.filter((robot) => {
       return (
         robot.username.toLowerCase().includes(value) ||
         robot.name.toLowerCase().includes(value)
       );
     });
-   // console.log(dataResultat);
-    // let regexp = new RegExp(`^${caractere}`, "i");
-    // let Data = this.state.robotDataref.filter((robot) => {
-    //   return robot.name.include(caractere);
-    // });
+
     this.setState({
       robotData: dataResultat,
     });
