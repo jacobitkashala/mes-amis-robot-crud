@@ -15,8 +15,8 @@ const Cart = ({ dataRobot, robotChosen, isClickedCart, clickCart, hiddenClickCar
         let cartRobot = data.map((infoRobot, index) => {
 
             return (
-                <div key={index} className="bloc--imag col-sm-3" id="" >
-                    <img src={infoRobot.image} className="" onClick={() => { clickCart(infoRobot.id) }} alt={infoRobot.id} />
+                <div key={index} className="bloc--imag col-xs-6 col-sm-4 col-md-3" id="" >
+                    <img src={infoRobot.image} className="img-fluid" onClick={() => { clickCart(infoRobot.id) }} alt={infoRobot.id} />
                     <div className="bloc--info" >
                         <h2 className="" > Name: {infoRobot.username} </h2>
                         <h2 className="" > User name: {infoRobot.name} </h2>

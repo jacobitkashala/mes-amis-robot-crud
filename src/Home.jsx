@@ -2,17 +2,17 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Style.css";
 import Cart from "./Cart";
-import bdRobot from "./robotsDatabase"
+// import bdRobot from "./robotsDatabase"
 //import Loader from "./Loader";
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            robotData:bdRobot,
-            robotDataRef:bdRobot,
-            // robotData: [],
-            // robotDataRef: [],
+            // robotData:bdRobot,
+            // robotDataRef:bdRobot,
+            robotData: [],
+            robotDataRef: [],
             robotChosen: [],
             isClickedCart: false,
         };
@@ -45,23 +45,21 @@ class Home extends React.Component {
         this.setState({ isClickedCart: false });
     };
 
-    // componentDidMount() {
-    //     fetch("https://jsonplaceholder.typicode.com/users")
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             let robotDataAll = [{ image: "" }];
+    componentDidMount() {
 
-    //             for (const index in data) {
-    //                 robotDataAll = [...data];
-    //                 robotDataAll[index].image = "https://robohash.org/" + index;
-    //             };
+        // fetch("https://robot-api-fetch.herokuapp.com/api/robots")
+        //     .then((response) => response.json())
+        //     .then((data) => {
+        //         // let robotDataAll = [{ image: "" }];
+        //         console.log(data);
+               
 
-    //             this.setState({
-    //                 robotData: robotDataAll,
-    //                 robotDataRef: robotDataAll,
-    //             });
-    //         });
-    // }
+        //         this.setState({
+        //             robotData: data,
+        //             robotDataRef: data,
+        //         });
+        //     });
+    }
 
     render() {
         //let Robotlength = [...this.state.robotData];
@@ -75,14 +73,14 @@ class Home extends React.Component {
                     <h2 className="col-sm-9 title" > MES AMIS ROBOTS </h2>
                     <input className="col-sm-7 inputgrabbed" onChange={this.onSeach} />
                 </div >
-                <div className="row container-galerie" >
+                {/* <div className="row container-galerie" >
                     <Cart clickCart={this.onClickCart}
                         dataRobot={dataRobot}
                         robotChosen={robotChosen}
                         isClickedCart={isClickedCart}
                         hiddenClickCart={this.hiddenClickCart}
                     />
-                </div >
+                </div > */}
             </div>
         );
     }

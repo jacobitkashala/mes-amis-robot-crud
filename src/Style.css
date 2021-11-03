@@ -33,7 +33,7 @@ div.collection {
   flex-direction: column;
 }
 img {
-  width: 90%;
+  /* width: 90%; */
   cursor: pointer;
 }
 div.bloc--info {
@@ -90,10 +90,6 @@ div.contenaire-carte {
 }
 
 div.bloc--imag {
-  position: relative;
-  width: 500px;
-  max-width: 100%;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -102,7 +98,7 @@ div.bloc--imag {
   margin: 10px 10px;
   border-radius: 5px;
 }
-div.infosupp {
+div.infosuppz {
   position: absolute;
   display: flex;
   right: 5px;
