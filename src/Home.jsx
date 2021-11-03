@@ -72,8 +72,8 @@ class Home extends React.Component {
         return (
             < div className="container " >
                 <div className="row container--title" >
-                    <h1 className="col-sm-5 title" > MES AMIS ROBOTS </h1>
-                    <input className="col-sm-5 inputgrabbed" onChange={this.onSeach} />
+                    <h2 className="col-sm-9 title" > MES AMIS ROBOTS </h2>
+                    <input className="col-sm-7 inputgrabbed" onChange={this.onSeach} />
                 </div >
                 <div className="row container-galerie" >
                     <Cart clickCart={this.onClickCart}

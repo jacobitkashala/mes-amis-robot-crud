@@ -16,15 +16,18 @@ h2 {
   color: #000;
   text-align: center;
 }
-h1.title {
+h2.title {
   margin-top: 4%;
+  padding-left: 0;
   margin-bottom: 10px;
+  font-weight: 100;
+  text-align: left;
   font-family: "SEGA";
 }
-div.container--title {
+/* div.container--title {
   display: flex;
   flex-direction: column;
-}
+} */
 div.collection {
   display: flex;
   flex-direction: column;
@@ -106,7 +109,7 @@ div.infosupp {
   top: 5px;
   background: rgba(223, 14, 14, 0.7);
   border-radius: 5px;
-  height: 15%;
+  /* height: 15%; */
   cursor: pointer;
 }
 div.cicle {
@@ -126,10 +129,10 @@ input.validerinfos {
   outline: none;
   margin: 10px;
 }
-div.bloc--imag:hover {
+/* div.bloc--imag:hover {
   transition: all 0.7s ease-out;
   transform: scale(1.1);
-}
+} */
 div.bloc--robot {
   position: relative;
   width: 500px;
